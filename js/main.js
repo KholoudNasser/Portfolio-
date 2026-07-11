@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const body = document.documentElement;
   const themeIcon = themeToggle.querySelector('i');
 
-  // Check local storage or default to dark
-  const currentTheme = localStorage.getItem('theme') || 'dark';
+  // Check local storage or default to cozy
+  const currentTheme = localStorage.getItem('theme') || 'cozy';
   body.setAttribute('data-theme', currentTheme);
   updateThemeIcon(currentTheme);
 
