@@ -109,91 +109,93 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Modal and Gallery interactions for Case Studies
-  const projectCards = document.querySelectorAll('.project-card');
   const modal = document.getElementById('projectModal');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalImage = document.getElementById('modalImage');
-  const modalDesc = document.getElementById('modalDesc');
-  const closeModalBtn = document.querySelector('.close-modal');
-  
-  const galleryPrev = document.getElementById('galleryPrev');
-  const galleryNext = document.getElementById('galleryNext');
-  const galleryIndicators = document.getElementById('galleryIndicators');
+  if (modal) {
+    const projectCards = document.querySelectorAll('.project-card');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalImage = document.getElementById('modalImage');
+    const modalDesc = document.getElementById('modalDesc');
+    const closeModalBtn = document.querySelector('.close-modal');
+    
+    const galleryPrev = document.getElementById('galleryPrev');
+    const galleryNext = document.getElementById('galleryNext');
+    const galleryIndicators = document.getElementById('galleryIndicators');
 
-  let currentGalleryImages = [];
-  let currentImageIndex = 0;
+    let currentGalleryImages = [];
+    let currentImageIndex = 0;
 
-  const updateGalleryUI = () => {
-    if (currentGalleryImages.length > 0) {
-      modalImage.src = currentGalleryImages[currentImageIndex];
-      
-      // Update indicators
-      galleryIndicators.innerHTML = '';
-      if (currentGalleryImages.length > 1) {
-        galleryPrev.style.display = 'flex';
-        galleryNext.style.display = 'flex';
+    const updateGalleryUI = () => {
+      if (currentGalleryImages.length > 0) {
+        modalImage.src = currentGalleryImages[currentImageIndex];
         
-        currentGalleryImages.forEach((_, idx) => {
-          const dot = document.createElement('span');
-          dot.classList.add('gallery-indicator');
-          if (idx === currentImageIndex) dot.classList.add('active');
+        // Update indicators
+        galleryIndicators.innerHTML = '';
+        if (currentGalleryImages.length > 1) {
+          galleryPrev.style.display = 'flex';
+          galleryNext.style.display = 'flex';
           
-          dot.addEventListener('click', () => {
-            currentImageIndex = idx;
-            updateGalleryUI();
+          currentGalleryImages.forEach((_, idx) => {
+            const dot = document.createElement('span');
+            dot.classList.add('gallery-indicator');
+            if (idx === currentImageIndex) dot.classList.add('active');
+            
+            dot.addEventListener('click', () => {
+              currentImageIndex = idx;
+              updateGalleryUI();
+            });
+            
+            galleryIndicators.appendChild(dot);
           });
-          
-          galleryIndicators.appendChild(dot);
-        });
-      } else {
-        // Hide controls if only 1 image
-        galleryPrev.style.display = 'none';
-        galleryNext.style.display = 'none';
+        } else {
+          // Hide controls if only 1 image
+          galleryPrev.style.display = 'none';
+          galleryNext.style.display = 'none';
+        }
       }
-    }
-  };
+    };
 
-  projectCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const title = card.getAttribute('data-title');
-      const imagesAttr = card.getAttribute('data-images');
-      const desc = card.getAttribute('data-desc');
+    projectCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const title = card.getAttribute('data-title');
+        const imagesAttr = card.getAttribute('data-images');
+        const desc = card.getAttribute('data-desc');
 
-      if (title) modalTitle.innerText = title;
-      if (desc) modalDesc.innerText = desc;
-      
-      if (imagesAttr) {
-        currentGalleryImages = imagesAttr.split(',').map(img => img.trim());
-        currentImageIndex = 0;
-        updateGalleryUI();
-      }
+        if (title) modalTitle.innerText = title;
+        if (desc) modalDesc.innerText = desc;
+        
+        if (imagesAttr) {
+          currentGalleryImages = imagesAttr.split(',').map(img => img.trim());
+          currentImageIndex = 0;
+          updateGalleryUI();
+        }
 
-      modal.classList.add('show');
-      document.body.style.overflow = 'hidden';
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      });
     });
-  });
 
-  galleryPrev.addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex > 0) ? currentImageIndex - 1 : currentGalleryImages.length - 1;
-    updateGalleryUI();
-  });
+    galleryPrev.addEventListener('click', () => {
+      currentImageIndex = (currentImageIndex > 0) ? currentImageIndex - 1 : currentGalleryImages.length - 1;
+      updateGalleryUI();
+    });
 
-  galleryNext.addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex < currentGalleryImages.length - 1) ? currentImageIndex + 1 : 0;
-    updateGalleryUI();
-  });
+    galleryNext.addEventListener('click', () => {
+      currentImageIndex = (currentImageIndex < currentGalleryImages.length - 1) ? currentImageIndex + 1 : 0;
+      updateGalleryUI();
+    });
 
-  const closeModal = () => {
-    modal.classList.remove('show');
-    document.body.style.overflow = 'auto';
-  };
+    const closeModal = () => {
+      modal.classList.remove('show');
+      document.body.style.overflow = 'auto';
+    };
 
-  closeModalBtn.addEventListener('click', closeModal);
+    closeModalBtn.addEventListener('click', closeModal);
 
-  window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeModal();
-    }
-  });
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+  }
 
 });

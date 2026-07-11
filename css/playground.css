@@ -1,0 +1,460 @@
+/* Software Architecture Playground Specific Stylesheet */
+
+.playground-page {
+  padding-top: 100px;
+  min-height: calc(100vh - 120px);
+}
+
+.hub-section {
+  padding: 2rem 0 4rem;
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  padding: 0.6rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.filter-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+  box-shadow: 0 0 15px var(--accent-light);
+}
+
+.filter-btn.active {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: #000000;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+}
+
+/* Patterns Selection Grid */
+.patterns-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.pattern-card {
+  cursor: pointer;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInCard 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInCard {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pattern-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 0 15px var(--accent-light);
+}
+
+.pattern-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-heading);
+  transition: color 0.3s;
+}
+
+.pattern-card:hover h3 {
+  color: var(--accent-primary);
+}
+
+.pattern-card-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  background: var(--accent-light);
+  color: var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  transition: transform 0.3s;
+}
+
+.pattern-card:hover .pattern-card-icon {
+  transform: scale(1.1);
+}
+
+/* Playground Section Styles */
+.playground-section {
+  padding: 1rem 0 4rem;
+}
+
+.playground-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.playground-header-title {
+  display: flex;
+  align-items: center;
+}
+
+.playground-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+  min-height: 600px;
+}
+
+@media (max-width: 1024px) {
+  .playground-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Canvas Panel (Left) */
+.canvas-panel {
+  display: flex;
+  flex-direction: column;
+  height: 650px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.canvas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.canvas-container {
+  flex-grow: 1;
+  border: 1px dashed var(--glass-border);
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* Dynamic Connections (SVG Layer) */
+.connections-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.connection-line {
+  stroke: var(--text-secondary);
+  stroke-width: 2;
+  stroke-dasharray: 6 4;
+  fill: none;
+  opacity: 0.45;
+  transition: stroke 0.3s, stroke-width 0.3s, opacity 0.3s;
+}
+
+/* Flowing data animation */
+.connection-line.flowing {
+  animation: svgDashFlow 30s linear infinite;
+}
+
+@keyframes svgDashFlow {
+  from { stroke-dashoffset: 200; }
+  to { stroke-dashoffset: 0; }
+}
+
+.connection-line.active {
+  stroke: var(--accent-secondary);
+  stroke-width: 3;
+  opacity: 0.95;
+}
+
+.connection-line.stress-fail {
+  stroke: #ef4444 !important;
+  stroke-width: 3.5 !important;
+  opacity: 0.9 !important;
+  animation: svgDashFlowFast 1.5s linear infinite !important;
+}
+
+.connection-line.stress-burst {
+  stroke: var(--accent-primary) !important;
+  stroke-width: 4 !important;
+  opacity: 1 !important;
+  animation: svgDashFlowFast 2s linear infinite !important;
+}
+
+@keyframes svgDashFlowFast {
+  from { stroke-dashoffset: 40; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* Draggable Nodes */
+.node {
+  position: absolute;
+  z-index: 10;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  padding: 0.75rem 1.1rem;
+  border-radius: 8px;
+  cursor: grab;
+  user-select: none;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color 0.3s, box-shadow 0.3s, opacity 0.3s, filter 0.3s;
+}
+
+.node:active {
+  cursor: grabbing;
+}
+
+.node i {
+  color: var(--accent-primary);
+  font-size: 1.1rem;
+  transition: transform 0.3s;
+}
+
+.node:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px var(--accent-light);
+}
+
+.node:hover i {
+  transform: scale(1.15);
+}
+
+/* Dimming unrelated nodes during dependency mapping */
+.canvas-container.hover-active .node {
+  opacity: 0.35;
+  filter: blur(0.5px);
+}
+
+.canvas-container.hover-active .node.active-dependency {
+  opacity: 1 !important;
+  filter: none !important;
+  border-color: var(--accent-secondary);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+}
+
+/* Node States for Stress Testing */
+.node.node-down {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.15) !important;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.4) !important;
+  animation: shakeNode 0.5s ease-in-out infinite alternate;
+}
+
+.node.node-down i {
+  color: #ef4444 !important;
+  animation: pulseIcon 1s infinite alternate;
+}
+
+.node.node-scaled {
+  border-color: var(--accent-secondary) !important;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3) !important;
+  animation: bounceNode 0.4s ease infinite alternate;
+}
+
+@keyframes shakeNode {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(2px, -2px) scale(0.98); }
+  100% { transform: translate(-2px, 2px) scale(1); }
+}
+
+@keyframes bounceNode {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+@keyframes pulseIcon {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
+}
+
+/* Component Tooltip */
+.component-tooltip {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  z-index: 20;
+  padding: 1.25rem !important; /* Override glass-card default padding */
+  height: auto !important; /* Override glass-card default 100% height */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-left: 4px solid var(--accent-primary) !important;
+  animation: slideUpTooltip 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.close-tooltip {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.close-tooltip:hover {
+  color: var(--text-primary);
+}
+
+@keyframes slideUpTooltip {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Insights Panel (Right) */
+.insights-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: 650px;
+}
+
+.insights-block {
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 1.5rem;
+}
+
+.insights-block:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.insights-heading {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Best For Icons */
+.best-for-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+}
+
+.best-for-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.best-for-item i {
+  font-size: 1.5rem;
+  color: var(--accent-primary);
+  margin-bottom: 0.5rem;
+}
+
+/* RPG Trade-off Stats */
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 45px;
+  align-items: center;
+  gap: 10px;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.stat-bar-wrapper {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stat-bar {
+  height: 100%;
+  background: var(--accent-primary);
+  border-radius: 4px;
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stat-val {
+  font-size: 0.85rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  text-align: right;
+  color: var(--text-primary);
+}
+
+/* Real World Usage Badges */
+.examples-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.example-badge {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all 0.3s;
+}
+
+.example-badge:hover {
+  border-color: var(--accent-secondary);
+  background: rgba(16, 185, 129, 0.08);
+}

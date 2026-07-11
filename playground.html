@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cozy">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Software Architecture Playground | Kholoud Nasser</title>
+  <meta name="description" content="An interactive, hands-on playground to learn software architecture patterns through visual models, drag-and-drop mechanics, and system stress testing.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/playground.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="js/main.js" defer></script>
+  <script src="js/playground.js" defer></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">KN<span class="text-accent">.</span></a>
+      <div class="menu-toggle" id="mobile-menu">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#case-studies">Case Studies</a>
+        <a href="index.html#leadership">Leadership</a>
+        <a href="#" class="active nav-playground-link">Playground</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="assets/Kholoud Nasser - Software Developer.pdf" class="btn btn-outline" style="padding: 0.5rem 1rem; border-radius: 8px;">
+          <i class="fa-solid fa-download"></i> Resume
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="playground-page">
+    
+    <!-- Hub View (Card selection) -->
+    <section id="hub-view" class="hub-section">
+      <div class="container">
+        <div class="text-center" style="margin-bottom: 3rem; margin-top: 2rem;">
+          <span class="hero-subtitle">Interactive Learning</span>
+          <h1 class="section-title text-center" style="margin-top: 0.5rem;">Software Architecture Playground</h1>
+          <p class="text-secondary" style="max-width: 700px; margin: 1rem auto 0; font-size: 1.1rem; line-height: 1.6;">
+            Learn software architecture through direct interaction. Hover over components to map dependencies, drag nodes to reshape layouts, and trigger stress tests to simulate high traffic or node failure.
+          </p>
+        </div>
+
+        <!-- Filter bar for architecture types -->
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">All Patterns</button>
+          <button class="filter-btn" data-filter="structural">Structural</button>
+          <button class="filter-btn" data-filter="distributed">Distributed & Scale</button>
+          <button class="filter-btn" data-filter="decoupled">Decoupled & Domain</button>
+        </div>
+
+        <div id="patterns-grid" class="patterns-grid fade-in-up">
+          <!-- Dynamically populated cards -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Canvas & Playground View -->
+    <section id="playground-view" class="playground-section" style="display: none;">
+      <div class="container-fluid" style="padding: 0 2rem;">
+        
+        <!-- Navigation bar inside the playground -->
+        <div class="playground-nav">
+          <button id="back-to-hub" class="btn btn-outline" style="padding: 0.5rem 1.2rem;">
+            <i class="fa-solid fa-arrow-left" style="margin-right: 8px;"></i> Back to Dashboard
+          </button>
+          <div class="playground-header-title">
+            <h2 id="playground-title" style="font-size: 1.75rem; margin-bottom: 0;">Microservices</h2>
+            <span id="playground-category" class="tag" style="margin-left: 15px;">Distributed</span>
+          </div>
+          <button id="next-pattern-btn" class="btn btn-outline" style="padding: 0.5rem 1.2rem;">
+            Next Pattern <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
+          </button>
+        </div>
+
+        <!-- Two Panel Layout -->
+        <div class="playground-grid">
+          
+          <!-- Left Panel: Drag-and-drop SVG canvas -->
+          <div class="canvas-panel glass-card">
+            <div class="canvas-header">
+              <span><i class="fa-solid fa-hand-pointer" style="margin-right: 5px;"></i> Drag nodes or click to inspect</span>
+              <button id="stress-test-btn" class="btn btn-accent stress-btn">
+                <i class="fa-solid fa-circle-exclamation" style="margin-right: 5px;"></i> Stress Test
+              </button>
+            </div>
+            
+            <div id="canvas-container" class="canvas-container">
+              <svg id="connections-svg" class="connections-svg">
+                <defs>
+                  <marker id="arrow" viewBox="0 0 10 10" refX="28" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-primary)" />
+                  </marker>
+                  <marker id="arrow-active" viewBox="0 0 10 10" refX="28" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-secondary)" />
+                  </marker>
+                </defs>
+              </svg>
+              <!-- Nodes dynamically generated -->
+            </div>
+            
+            <!-- Component tooltip info bubble -->
+            <div id="component-tooltip" class="component-tooltip glass-card" style="display: none;">
+              <h4 id="tooltip-title">Component Name</h4>
+              <p id="tooltip-desc">Description of component responsibility.</p>
+              <button id="close-tooltip" class="close-tooltip">&times;</button>
+            </div>
+          </div>
+
+          <!-- Right Panel: Insights and Specs -->
+          <div class="insights-panel glass-card">
+            
+            <!-- Short Description -->
+            <div class="insights-block">
+              <h3 class="insights-heading"><i class="fa-solid fa-circle-info text-accent"></i> Overview</h3>
+              <p id="pattern-desc" class="text-secondary" style="font-size: 1.05rem; line-height: 1.6;">
+                Brief description of the selected software architecture pattern goes here.
+              </p>
+            </div>
+
+            <!-- Best For Section -->
+            <div class="insights-block">
+              <h3 class="insights-heading"><i class="fa-solid fa-circle-check text-accent"></i> Best For</h3>
+              <div id="best-for-list" class="best-for-list">
+                <!-- Dynamically populated target icons -->
+              </div>
+            </div>
+
+            <!-- RPG-Style Trade-off Stats -->
+            <div class="insights-block">
+              <h3 class="insights-heading"><i class="fa-solid fa-sliders text-accent"></i> Architecture Trade-offs</h3>
+              <div class="stats-container">
+                <div class="stat-row">
+                  <span class="stat-label">Simplicity</span>
+                  <div class="stat-bar-wrapper">
+                    <div id="stat-simplicity" class="stat-bar" style="width: 80%;"></div>
+                  </div>
+                  <span id="val-simplicity" class="stat-val">8/10</span>
+                </div>
+                <div class="stat-row">
+                  <span class="stat-label">Scalability</span>
+                  <div class="stat-bar-wrapper">
+                    <div id="stat-scalability" class="stat-bar" style="width: 40%;"></div>
+                  </div>
+                  <span id="val-scalability" class="stat-val">4/10</span>
+                </div>
+                <div class="stat-row">
+                  <span class="stat-label">Fault Tolerance</span>
+                  <div class="stat-bar-wrapper">
+                    <div id="stat-fault" class="stat-bar" style="width: 50%;"></div>
+                  </div>
+                  <span id="val-fault" class="stat-val">5/10</span>
+                </div>
+                <div class="stat-row">
+                  <span class="stat-label">Deployability</span>
+                  <div class="stat-bar-wrapper">
+                    <div id="stat-deployability" class="stat-bar" style="width: 70%;"></div>
+                  </div>
+                  <span id="val-deployability" class="stat-val">7/10</span>
+                </div>
+                <div class="stat-row">
+                  <span class="stat-label">Cost Efficiency</span>
+                  <div class="stat-bar-wrapper">
+                    <div id="stat-cost" class="stat-bar" style="width: 90%;"></div>
+                  </div>
+                  <span id="val-cost" class="stat-val">9/10</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Real-World Examples -->
+            <div class="insights-block">
+              <h3 class="insights-heading"><i class="fa-solid fa-globe text-accent"></i> Real-World Usage</h3>
+              <div id="examples-badges" class="examples-badges">
+                <!-- Dynamically populated tags -->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/kholoudali" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:knasser.software@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+      <p class="text-secondary" style="font-family: 'Outfit', sans-serif; font-size: 1.1rem; margin-bottom: 1rem;">
+        "Building scalable software that transforms businesses through technology."
+      </p>
+      <p class="text-secondary" style="font-size: 0.9rem;">
+        &copy; 2026 Kholoud Nasser. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
