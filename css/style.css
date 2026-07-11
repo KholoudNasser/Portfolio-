@@ -105,7 +105,7 @@ ul {
 }
 
 section {
-  padding: 6rem 0;
+  padding: 4.5rem 0;
 }
 
 .section-title {
@@ -717,8 +717,15 @@ footer {
 
 /* Tablets */
 @media (max-width: 768px) {
+  /* Force scroll animations to be fully visible on mobile/tablets for performance and reliability */
+  .fade-in-up {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
   section {
-    padding: 4rem 0;
+    padding: 3rem 0;
   }
 
   .menu-toggle {
