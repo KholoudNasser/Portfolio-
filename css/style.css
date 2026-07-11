@@ -691,6 +691,12 @@ footer {
   animation-delay: 2s;
 }
 
+.badge-4 {
+  top: 30%;
+  right: -15%;
+  animation-delay: 1.5s;
+}
+
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
@@ -792,6 +798,7 @@ footer {
   .badge-1 { left: -5%; top: 5%; }
   .badge-2 { right: -5%; bottom: 15%; }
   .badge-3 { bottom: -5%; left: 10%; }
+  .badge-4 { right: -5%; top: 32%; }
 }
 
 /* Floating Tech Symbols & Developer Graphics */
