@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kholoud Nasser - Resume</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Reset & Core variables */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #2d3748;
+      background-color: #f7fafc;
+      line-height: 1.4;
+      padding: 1.5rem;
+    }
+    
+    /* Page Container representing A4 dimensions */
+    .resume-container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      border-radius: 4px;
+    }
+
+    /* Print styling to force layout on paper export */
+    @media print {
+      body {
+        background-color: #ffffff;
+        padding: 0;
+      }
+      .resume-container {
+        box-shadow: none;
+        padding: 1rem 1.25rem;
+        max-width: 100%;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+      a {
+        text-decoration: none;
+        color: #2d3748 !important;
+      }
+    }
+
+    /* Header styling */
+    header {
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #1a202c;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+    }
+    .subtitle {
+      font-size: 0.95rem;
+      color: #4a5568;
+      margin-top: 0.2rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .contact-info {
+      margin-top: 0.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 1.25rem;
+      font-size: 0.82rem;
+      color: #4a5568;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .contact-item a {
+      color: #3182ce;
+      text-decoration: none;
+    }
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    /* Section structures */
+    section {
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #2b6cb0;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.15rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Text blocks */
+    p.summary-text {
+      font-size: 0.88rem;
+      text-align: justify;
+      color: #4a5568;
+      line-height: 1.45;
+    }
+
+    /* Experience & Projects items */
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.15rem;
+    }
+    .item-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #2d3748;
+    }
+    .item-subtitle {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #4a5568;
+    }
+    .item-date {
+      font-size: 0.82rem;
+      color: #718096;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .item-bullets {
+      list-style-type: disc;
+      margin-left: 1.1rem;
+      margin-top: 0.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .item-bullets li {
+      font-size: 0.84rem;
+      color: #4a5568;
+      line-height: 1.4;
+    }
+    .project-highlight {
+      margin-top: 0.25rem;
+      margin-left: 0.5rem;
+    }
+    .project-highlight strong {
+      color: #2d3748;
+    }
+
+    /* Skills layout */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.4rem 1rem;
+    }
+    .skill-category {
+      font-size: 0.84rem;
+      color: #4a5568;
+    }
+    .skill-category strong {
+      color: #2d3748;
+    }
+
+    /* Education, Certifications & Publications */
+    .edu-item {
+      margin-bottom: 0.5rem;
+    }
+    .edu-item:last-child {
+      margin-bottom: 0;
+    }
+    .pub-item {
+      margin-bottom: 0.35rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="resume-container">
+    
+    <!-- Header -->
+    <header>
+      <div class="header-top">
+        <div>
+          <h1>KHOLOUD NASSER</h1>
+          <div class="subtitle">Senior Full Stack Software Engineer & Technical Lead</div>
+        </div>
+      </div>
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>UAE</span>
+        </div>
+        <div class="contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:knasser.software@gmail.com">knasser.software@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <i class="fa-solid fa-phone"></i>
+          <a href="tel:+971501448633">+971 50 144 8633</a>
+        </div>
+        <div class="contact-item">
+          <i class="fa-brands fa-linkedin"></i>
+          <a href="https://www.linkedin.com/in/kholoudali" target="_blank">in/kholoudali</a>
+        </div>
+        <div class="contact-item">
+          <i class="fa-solid fa-globe"></i>
+          <a href="https://KholoudNasser.com" target="_blank">KholoudNasser.com</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Summary -->
+    <section>
+      <div class="section-title">Summary</div>
+      <p class="summary-text">
+        Accomplished full-stack software engineer and Technical Lead with over 11+ years of experience delivering robust enterprise web and desktop solutions. Proven expertise in designing scalable backend architectures, structuring clean database layers, and building intuitive user interfaces. Skilled in bridging the gap between business requirements and physical system architecture, integrating physical hardware components, and optimizing high-performance transactional platforms. Experienced in leading cross-functional teams, directing digital transformations, and maintaining optimal availability for critical enterprise platforms.
+      </p>
+    </section>
+
+    <!-- Core Expertise -->
+    <section>
+      <div class="section-title">Core Expertise</div>
+      <div class="skills-grid" style="grid-template-columns: repeat(3, 1fr); gap: 0.25rem 1rem; margin-bottom: 0.25rem;">
+        <div class="skill-category">• Solution Architecture</div>
+        <div class="skill-category">• System Integration & APIs</div>
+        <div class="skill-category">• Distributed Systems Design</div>
+        <div class="skill-category">• Database Design & SQL</div>
+        <div class="skill-category">• Hardware/IoT Interfacing</div>
+        <div class="skill-category">• Technical Team Leadership</div>
+        <div class="skill-category">• Agile & DevOps Pipelines</div>
+        <div class="skill-category">• Payment Gateways (MPGS)</div>
+        <div class="skill-category">• Full-Stack System Design</div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section>
+      <div class="section-title">Professional Experience</div>
+      
+      <div style="margin-bottom: 1rem;">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Independent Technical Consultant & Research Engineer</span><br>
+            <span class="item-subtitle">Freelance & Academic Research</span>
+          </div>
+          <span class="item-date">December 2025 - Present</span>
+        </div>
+        <ul class="item-bullets">
+          <li><strong>AI & VR Research:</strong> Engineering machine learning classifiers to process eye-tracking telemetry, enabling real-time adaptive adjustments in VR cognitive simulations for an upcoming research paper.</li>
+          <li><strong>Ghaith Platform Development:</strong> Maintained continuous technical feature delivery, performance optimization, and updates for the Ghaith humanitarian platform on an advisory freelance basis.</li>
+          <li><strong>Client Systems Delivery:</strong> Designed, developed, and launched responsive web applications and custom management solutions for private business owners.</li>
+          
+        </ul>
+      </div>
+
+      <div style="margin-bottom: 1rem;">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Senior Software Developer / Technical Lead</span><br>
+            <span class="item-subtitle">Emirates Red Crescent</span>
+          </div>
+          <span class="item-date">December 2013 - November 2025</span>
+        </div>
+        <ul class="item-bullets">
+          <li>Architected, developed, and maintained high-performance backend systems using C# and .NET, resulting in a 30% increase in system efficiency and reducing response times by 50% for both internal and client-facing applications.</li>
+          <li>Directed system security and scalability strategies, implementing architectural best practices that reduced security breaches by 95% and supported a 200% increase in user traffic without performance degradation.</li>
+          <li>Designed and implemented secure RESTful APIs with .NET Core, optimizing data exchange models, OAuth authentication, and real-time communication across multiple platforms.</li>
+          <li>Utilized ASP.NET MVC and WebAPI to build user-friendly web applications, directing responsive UI/UX front-end integration to improve user engagement by 30% and ensure seamless functionality across multiple device formats.</li>
+          <li>Managed troubleshooting and resolution of critical performance bottlenecks and security vulnerabilities within the .NET ecosystem, reducing system downtime to 0.1% and maintaining a 99.9% uptime rate.</li>
+          <li>Led the cross-functional design and delivery of interactive gameplay systems and user experiences for mobile applications, utilizing AI-driven characters to enhance real-time interactions.</li>
+          <li>Architected secure donation flows utilizing MPGS (Mastercard Payment Gateway Services) and billing integrations, boosting transaction processing efficiency by 40% and reducing transaction errors by 15%.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Page Break for Printing clean 2-page layouts -->
+    <div class="page-break"></div>
+
+    <!-- Projects -->
+    <section style="margin-top: 1.5rem;">
+      <div class="section-title">Key Projects</div>
+      
+      <div style="margin-bottom: 1rem;">
+        <div class="item-header">
+          <span class="item-title">Academic Project – VR & Eye Tracking System for ADHD Intervention</span>
+          <span class="item-date">Heriot-Watt University</span>
+        </div>
+        <ul class="item-bullets">
+          <li>Designed and developed a multi-modal VR application using Unity3D and the Meta Quest Pro headset to assess and support attention levels.</li>
+          <li>Implemented real-time gaze tracking and adaptive difficulty logic to adjust cognitive tasks dynamically based on distraction response and focus.</li>
+          <li>Built a secure Azure backend with Function Apps and SQL Database for session logging, telemetry, and analytics.</li>
+          <li>Developed a clinician dashboard in ASP.NET Core and Razor Pages to visualize gaze telemetry, reaction times, and adaptive changes.</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="item-header">
+          <span class="item-title">Academic Project – Image Classification Using ML & Deep Learning</span>
+          <span class="item-date">Heriot-Watt University</span>
+        </div>
+        <ul class="item-bullets">
+          <li>Conducted comparative research between traditional machine learning models (Random Forest, Perceptron) and Convolutional Neural Networks (CNNs) for image classification.</li>
+          <li>Implemented and evaluated MLP, CNN, and ANN models using stratified 10-fold cross-validation.</li>
+          <li>Achieved ~92% classification accuracy using Perceptron models and ~99.9% accuracy with fine-tuned CNN models.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section>
+      <div class="section-title">Education</div>
+      
+      <div class="edu-item">
+        <div class="item-header">
+          <span class="item-title">Master's of Science in Software Engineering</span>
+          <span class="item-date">2025</span>
+        </div>
+        <div style="font-size: 0.95rem; color: #4a5568;">Heriot-Watt University | Dubai, UAE • <strong>4.00 GPA</strong></div>
+      </div>
+      
+      <div class="edu-item">
+        <div class="item-header">
+          <span class="item-title">Bachelor's of Computers and Information (Minor in IT)</span>
+          <span class="item-date">2013</span>
+        </div>
+        <div style="font-size: 0.95rem; color: #4a5568;">Assiut University | Assiut, Egypt</div>
+        <div style="font-size: 0.9rem; color: #718096; margin-top: 0.15rem;"><strong>Graduation Project:</strong> Network Traffic Monitoring Application (Java, MySQL, GUI Analytics)</div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section>
+      <div class="section-title">Technical Skills</div>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <strong>Languages:</strong> C#, Java, JavaScript, Python, C++, PHP, HTML/CSS
+        </div>
+        <div class="skill-category">
+          <strong>Backend Tech:</strong> .NET Core, ASP.NET MVC/WebAPI, Entity Framework, REST, SOAP, Spring Boot
+        </div>
+        <div class="skill-category">
+          <strong>Frontend & Game Dev:</strong> React, Next.js, Razor Pages, Unity3D, Unreal Engine, WebGPU, Bootstrap
+        </div>
+        <div class="skill-category">
+          <strong>Databases:</strong> SQL Server, Oracle Database, MySQL, PostgreSQL, MongoDB
+        </div>
+        <div class="skill-category">
+          <strong>DevOps & Cloud:</strong> Microsoft Azure, Azure DevOps, Docker, Kubernetes, Jenkins, Git, Jira, CI/CD
+        </div>
+        <div class="skill-category">
+          <strong>Methodologies:</strong> Agile/Scrum, Solution Design, Digital Transformation, Business Analysis
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications & Publications -->
+    <section>
+      <div class="section-title">Publications & Certifications</div>
+      
+      <div class="pub-item">
+        <div class="item-header">
+          <span class="item-title">AAAI-SuS 2025 Publication</span>
+          <span class="item-date">2025</span>
+        </div>
+        <div style="font-size: 0.9rem; color: #4a5568; margin-top: 0.15rem;">
+          Co-authored paper: <em>"The Design of a Virtual Reality Environment for ADHD Intervention"</em>, published at the AAAI Symposium series.
+        </div>
+      </div>
+
+      <div style="margin-top: 0.75rem;">
+        <div class="item-header">
+          <span class="item-title">ITIL Foundation in IT Service Management</span>
+          <span class="item-date">2017</span>
+        </div>
+        <div style="font-size: 0.9rem; color: #4a5568; margin-top: 0.15rem;">
+          Certified by APMG International, aligning business and IT services with operation excellence.
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
