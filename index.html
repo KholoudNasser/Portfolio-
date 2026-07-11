@@ -27,7 +27,7 @@
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
           <i class="fa-solid fa-moon"></i>
         </button>
-        <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem; border-radius: 8px;">
+        <a href="assets/Kholoud Nasser - Software Developer.pdf" class="btn btn-outline" style="padding: 0.5rem 1rem; border-radius: 8px;">
           <i class="fa-solid fa-download"></i> Resume
         </a>
       </nav>
@@ -50,7 +50,7 @@
           </p>
           <div class="hero-actions fade-in-up" style="transition-delay: 0.3s;">
             <a href="#case-studies" class="btn btn-primary">View Portfolio</a>
-            <a href="#" class="btn btn-outline">Download Resume</a>
+            <a href="assets/Kholoud Nasser - Software Developer.pdf" class="btn btn-outline" download>Download Resume</a>
             <a href="#contact" class="btn btn-outline">Contact Me</a>
             <a href="#about" class="btn btn-outline">About Me</a>
           </div>
@@ -59,7 +59,7 @@
         <div class="hero-banner fade-in-up" style="transition-delay: 0.4s;">
           <div class="banner-wrapper">
             <div class="banner-glow"></div>
-            <img src="assets/images/profile.jpg" alt="Kholoud Nasser" class="profile-img">
+            <img src="assets/images/hero_banner.jpg" alt="Kholoud Nasser" class="profile-img">
             
             <!-- Floating tech badges -->
             <div class="floating-badge badge-1">
@@ -71,6 +71,13 @@
             <div class="floating-badge badge-3">
               <i class="fa-solid fa-lightbulb"></i> Tech Lead
             </div>
+
+            <!-- Floating software engineering graphics / tech symbols -->
+            <span class="tech-symbol sym-1">&lt;/&gt;</span>
+            <span class="tech-symbol sym-2">{ }</span>
+            <span class="tech-symbol sym-3">const dev = new TechLead();</span>
+            <span class="tech-symbol sym-4">git push</span>
+            <span class="tech-symbol sym-5">() =&gt; scale</span>
           </div>
         </div>
       </div>
@@ -265,36 +272,36 @@
       </div>
 
       <!-- Case Study 2 -->
-      <div class="project-card" data-title="Payment Gateway Integration" data-images="assets/images/payment.png,assets/images/vr.png" data-desc="Enabled a 40% increase in digital transaction volume and zero security breaches since deployment.">
+      <div class="project-card" data-title="Ghaith Global Humanitarian Platform" data-images="assets/images/ghaith/1.jpg,assets/images/ghaith/2.jpg,assets/images/ghaith/3.jpg" data-desc="Launched a unified global donation portal facilitating secure contributions, Zakat calculation, and custom sponsorships worldwide.">
         <div class="glass-card">
-          <img src="assets/images/payment.png" alt="Payment Gateway Integration" class="project-img">
+          <img src="assets/images/ghaith/1.jpg" alt="Ghaith Global Humanitarian Platform" class="project-img">
           <div class="project-content">
-            <span class="tag" style="align-self: flex-start; margin-bottom: 1rem;">FinTech / Payment</span>
-            <h3>Payment Gateway Integration (MPGS)</h3>
-            <p><strong>The Problem:</strong> The existing payment infrastructure was brittle and lacked support for modern, secure international transactions.<br><br>
-            <strong>The Solution:</strong> Integrated Mastercard Payment Gateway Services (MPGS) into the core enterprise donation and payment portals.<br><br>
-            <strong>My Role & Architecture:</strong> Acted as Solution Architect and Lead Engineer. Designed secure, compliant REST APIs (Java Spring Boot) to handle tokenization and PCI-DSS compliance requirements.<br><br>
-            <strong>Business Impact:</strong> Enabled a 40% increase in digital transaction volume and zero security breaches since deployment.</p>
+            <span class="tag" style="align-self: flex-start; margin-bottom: 1rem;">FinTech / Humanitarian</span>
+            <h3>Ghaith Global Humanitarian Platform</h3>
+            <p><strong>The Problem:</strong> Traditional charity platforms lacked unified, secure, and user-friendly donation flows, resulting in high transaction drop-offs and complex sponsorship tracking.<br><br>
+            <strong>The Solution:</strong> Developed "Ghaith" (منصة غيث), a global, highly scalable humanitarian platform that unifies donations, sponsorships, and campaigns with frictionless payment channels, recurring contribution plans, and interactive Zakat calculators.<br><br>
+            <strong>My Role & Architecture:</strong> Technical Lead & Solution Architect. Designed and built the responsive Next.js & React-powered web application, integrated with secure REST APIs for payment processing (MPGS integration), SMS carrier donations, and automated multi-lingual support (Arabic/English).<br><br>
+            <strong>Business Impact:</strong> Enabled a 40% increase in digital donation volume, seamless international transaction handling, and zero security breaches since deployment.</p>
             <div style="margin-top: auto;">
-              <span class="tag">Java Spring Boot</span> <span class="tag">REST APIs</span> <span class="tag">Security</span>
+              <span class="tag">Next.js</span> <span class="tag">React</span> <span class="tag">Java Spring Boot</span> <span class="tag">MPGS</span>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Case Study 3 -->
-      <div class="project-card" data-title="VR & Eye Tracking ADHD Research" data-images="assets/images/vr.png,assets/images/kiosk.png" data-desc="Resulted in a published paper at AAAI and provided clinicians with a novel quantitative diagnostic tool.">
+      <div class="project-card" data-title="ADHD-VR Diagnostic & Analytics Platform" data-images="assets/images/VR/dashboard-main1.png,assets/images/VR/dashboard-main2.png,assets/images/VR/dashboard-session1.png,assets/images/VR/dashboard-session2.png,assets/images/VR/classroom2.jpg,assets/images/VR/classroom_bus_distractor.jpg,assets/images/VR/classroom_math_task.jpg,assets/images/VR/b3567f8f788b31abc320937e77d1a0ce(52)(1).jpg" data-desc="Published at AAAI; provides clinicians with real-time gaze telemetry, cognitive test details, and diagnostic indices to assess ADHD objectively.">
         <div class="glass-card">
-          <img src="assets/images/vr.png" alt="VR Research" class="project-img">
+          <img src="assets/images/VR/dashboard-main1.png" alt="ADHD-VR Diagnostic & Analytics Platform" class="project-img">
           <div class="project-content">
-            <span class="tag" style="align-self: flex-start; margin-bottom: 1rem;">AI / Research</span>
-            <h3>Machine Learning Image Classification & VR Research</h3>
-            <p><strong>The Problem:</strong> Need for innovative diagnostic tools for ADHD research using eye-tracking and advanced image classification.<br><br>
-            <strong>The Solution:</strong> Developed a Virtual Reality application coupled with eye-tracking hardware and an ML pipeline for analyzing visual attention data.<br><br>
-            <strong>My Role:</strong> Co-researcher and Lead Developer. Built the data ingestion pipeline and integrated ML classification models.<br><br>
-            <strong>Impact:</strong> Resulted in a published paper at AAAI and provided clinicians with a novel quantitative diagnostic tool.</p>
+            <span class="tag" style="align-self: flex-start; margin-bottom: 1rem;">VR / HealthTech / AI</span>
+            <h3>ADHD-VR Diagnostic & Analytics Platform</h3>
+            <p><strong>The Problem:</strong> Clinical ADHD assessments traditionally rely on subjective behavioral observation, lacking objective quantitative metrics for gaze focus, attention span, and impulse control.<br><br>
+            <strong>The Solution:</strong> Designed and built a clinical Virtual Reality suite (ADHD-VR) that collects high-frequency gaze and telemetry data during virtual tasks. It pipes this telemetry in real-time to a web dashboard displaying session statistics, gaze focus graphs, and key clinical indices (GDI, PDI).<br><br>
+            <strong>My Role & Architecture:</strong> Lead Full Stack Developer & AI Engineer. Integrated the VR telemetry data stream with a web backend, built the React-based analytics dashboard utilizing Chart.js, and co-developed the pipeline calculating diagnostic metrics.<br><br>
+            <strong>Business Impact:</strong> Published academic research at the AAAI conference and provided clinicians with a novel, high-accuracy quantitative diagnostic and monitoring system.</p>
             <div style="margin-top: auto;">
-              <span class="tag">Python</span> <span class="tag">Machine Learning</span> <span class="tag">VR</span>
+              <span class="tag">React</span> <span class="tag">Python</span> <span class="tag">VR Integration</span> <span class="tag">Gaze Tracking</span>
             </div>
           </div>
         </div>
@@ -373,7 +380,7 @@
         <div class="mb-4">
           <h4 style="font-size: 1.25rem;">AAAI Publication</h4>
           <p class="text-secondary mt-1">Contributed to academic research involving machine learning and advanced data classification, published at the prestigious AAAI conference.</p>
-          <a href="#" class="btn btn-outline" style="margin-top: 1rem; padding: 0.4rem 1rem; font-size: 0.9rem;">View Paper</a>
+          <a href="https://ojs.aaai.org/index.php/AAAI-SS/article/view/36065" class="btn btn-outline" style="margin-top: 1rem; padding: 0.4rem 1rem; font-size: 0.9rem;">View Paper</a>
         </div>
 
         <div>
@@ -395,9 +402,9 @@
         </p>
         <div class="glass-card" style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; text-align: left; max-width: 450px; margin-left: auto; margin-right: auto;">
           <p style="font-size: 1.1rem;"><i class="fa-solid fa-location-dot text-accent" style="width: 30px; text-align: center; font-size: 1.3rem; margin-right: 10px;"></i> Abu Dhabi, UAE (Golden Visa Holder)</p>
-          <p style="font-size: 1.1rem;"><i class="fa-solid fa-envelope text-accent" style="width: 30px; text-align: center; font-size: 1.3rem; margin-right: 10px;"></i> <a href="mailto:contact@kholoudnasser.com">contact@kholoudnasser.com</a></p>
-          <p style="font-size: 1.1rem;"><i class="fa-brands fa-linkedin text-accent" style="width: 30px; text-align: center; font-size: 1.3rem; margin-right: 10px;"></i> <a href="#">LinkedIn Profile</a></p>
-          <p style="font-size: 1.1rem;"><i class="fa-brands fa-github text-accent" style="width: 30px; text-align: center; font-size: 1.3rem; margin-right: 10px;"></i> <a href="#">GitHub Profile</a></p>
+          <p style="font-size: 1.1rem;"><i class="fa-solid fa-envelope text-accent" style="width: 30px; text-align: center; font-size: 1.3rem; margin-right: 10px;"></i> <a href="mailto:knasser.software@gmail.com">knasser.software@gmail.com</a></p>
+          <p style="font-size: 1.1rem;"><i class="fa-brands fa-linkedin text-accent" style="width: 30px; text-align: center; font-size: 1.3rem; margin-right: 10px;"></i> <a href="www.linkedin.com/in/kholoudali">LinkedIn Profile</a></p>
+          <!-- <p style="font-size: 1.1rem;"><i class="fa-brands fa-github text-accent" style="width: 30px; text-align: center; font-size: 1.3rem; margin-right: 10px;"></i> <a href="#">GitHub Profile</a></p> -->
         </div>
       </div>
     </div>

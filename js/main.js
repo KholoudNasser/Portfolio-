@@ -26,22 +26,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   themeToggle.addEventListener('click', () => {
     let theme = body.getAttribute('data-theme');
+    let nextTheme = 'dark';
+    
     if (theme === 'dark') {
-      body.setAttribute('data-theme', 'light');
-      localStorage.setItem('theme', 'light');
-      updateThemeIcon('light');
+      nextTheme = 'light';
+    } else if (theme === 'light') {
+      nextTheme = 'cozy';
     } else {
-      body.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-      updateThemeIcon('dark');
+      nextTheme = 'dark';
     }
+    
+    body.setAttribute('data-theme', nextTheme);
+    localStorage.setItem('theme', nextTheme);
+    updateThemeIcon(nextTheme);
   });
 
   function updateThemeIcon(theme) {
     if (theme === 'dark') {
-      themeIcon.className = 'fa-solid fa-sun'; // Show sun when dark
+      themeIcon.className = 'fa-solid fa-sun'; // Next is light, show sun
+    } else if (theme === 'light') {
+      themeIcon.className = 'fa-solid fa-mug-hot'; // Next is cozy, show coffee
     } else {
-      themeIcon.className = 'fa-solid fa-moon'; // Show moon when light
+      themeIcon.className = 'fa-solid fa-moon'; // Next is dark, show moon
     }
   }
 
